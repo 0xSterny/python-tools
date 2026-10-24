@@ -5,6 +5,7 @@ from __future__ import print_function
 import sys
 import os
 from pebble import ProcessPool
+import multiprocessing
 import argparse
 
 try:
@@ -51,6 +52,8 @@ def mt_execute(username):  # multithreading requires a function
 
 
 if __name__ == '__main__':
+    # Python 3.14 changed the default start method to forkserver. The workers need the globals from this block.
+    multiprocessing.set_start_method('fork')
     parser = argparse.ArgumentParser(add_help=True, description="")
     parser.add_argument('-u', action='store', help='Username or path to file containing usernames 1 per line')
     parser.add_argument('-d', action='store', help='FQDN to use')
