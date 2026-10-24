@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from impacket.dcerpc.v5 import transport, scmr
 from pebble import ProcessPool
 import multiprocessing
